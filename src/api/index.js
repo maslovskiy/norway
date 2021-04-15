@@ -23,3 +23,8 @@ export const getSchemaTypes = () => {
     .then(response => response)
     .catch(error => error)
 }
+export const getUser = () => {
+  return axios.post('/user-profile/username')
+    .then(response => response)
+    .catch(error => error)
+}

@@ -117,7 +117,6 @@ const Table = ({columns, data, updateMyData, skipPageReset, defaultColumn}) => {
 }
 
 const ReactTable = ({data, setTableValues, columns, defaultColumn}) => {
-
   const updateMyData = (rowIndex, columnId, value) => {
     const result = data.map((row, index) => {
       return index === rowIndex ? {

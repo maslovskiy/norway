@@ -30,21 +30,13 @@ const SearchField = () => {
   const classes = useStyles();
   const {setSearchValue} = useSchemas();
 
-  const onSubmit = e => {
-    e.preventDefault();
-    const searchValue = e.target[0].value.trim();
-    setSearchValue(searchValue)
-  };
-
   const onChange = e => {
     e.preventDefault();
-    if (e.target.value.trim().length === 0) {
-      setSearchValue("")
-    }
+    setSearchValue(e.target.value.trim())
   }
 
   return (
-    <Paper component="form" className={classes.root} onSubmit={onSubmit}>
+    <Paper component="section" className={classes.root}>
       <InputBase
         className={classes.input}
         placeholder="Search"

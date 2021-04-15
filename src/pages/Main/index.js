@@ -6,8 +6,9 @@ import {makeStyles} from '@material-ui/core/styles';
 import User from "../../components/User";
 import Filter from "../../components/Filter";
 import SchemaList from "../../components/List";
-import {getSchemas, getSchemaTypes} from "../../api";
+import {getSchemas, getSchemaTypes, getUser} from "../../api";
 import {useSchemas} from "../../providers/schemas/hooks";
+import {useUser} from "../../providers/user/hooks";
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -18,21 +19,24 @@ const useStyles = makeStyles(() => ({
 const Main = () => {
   const classes = useStyles();
   const {setSchemas, setSchemasTypes} = useSchemas();
+  const {setUser} = useUser();
 
   useEffect(() => {
     getSchemas()
       .then(({data}) => setSchemas(data));
     getSchemaTypes()
       .then(({data}) => setSchemasTypes(data));
-  }, [])
+    getUser()
+      .then(({data}) => setUser(data));
+  }, []);
 
   return (
     <Box>
-      <Grid container className={classes.container}>
-        <Grid item xs={8}>
+      <Grid container spacing={2} className={classes.container}>
+        <Grid item xs={6} md={8}>
           <SearchField/>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={6} md={4}>
           <User/>
         </Grid>
       </Grid>

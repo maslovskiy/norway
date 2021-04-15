@@ -1,6 +1,7 @@
 import React from 'react';
 import {Box} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import {classnames} from "@material-ui/data-grid";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -21,12 +22,14 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const FormSection = ({children, title}) => {
+const FormSection = ({children, title, className, innerClassName}) => {
   const classes = useStyles();
   return (
-    <Box component={"section"} className={classes.root}>
-      <h2 className={classes.title}>{title}</h2>
-      <Box className={classes.inner}>
+    <Box component={"section"} className={classnames(classes.root, className)}>
+      {
+        title &&  <h2 className={classes.title}>{title}</h2>
+      }
+      <Box className={classnames(classes.inner, innerClassName)}>
         {children}
       </Box>
     </Box>

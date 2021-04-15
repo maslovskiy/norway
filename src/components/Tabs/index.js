@@ -45,6 +45,7 @@ const RoundedTabs = ({value, onChange, children}) => {
       onChange={onChange}
       indicatorColor="primary"
       classes={classes}
+      component={"nav"}
     >
       {children}
     </Tabs>

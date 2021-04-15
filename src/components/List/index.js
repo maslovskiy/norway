@@ -61,7 +61,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#F6F4F0"
   },
   listAvatar: {
-    width: "80px"
+    maxWidth: "80px",
+    width: "30%"
   },
   notFound: {
     textTransform: "capitalize",

@@ -26,7 +26,7 @@ const theme = createMuiTheme({
         "&$focused": {
           color: "#000",
           // fontSize: "20px",
-          lineHeight: " 24px"
+          // lineHeight: " 24px"
         },
       },
     },

@@ -43,7 +43,22 @@ const Schema = () => {
   const classes = useStyles();
 
   const [tableValues, setTableValues] = React.useState([]);
-  const [generalMeetingTableValues, setGeneralMeetingTableValues] = React.useState([]);
+  const [generalMeetingTableValues, setGeneralMeetingTableValues] = React.useState(
+    [
+      {
+        shareholder: "Roisin Long",
+        existing_shares: 100,
+        new_shares: "",
+        represented_with: "",
+      },
+      {
+        shareholder: "Jon Simmonds Person",
+        existing_shares: 500,
+        new_shares: 200,
+        represented_with: "Jameson Howard",
+      }
+    ]
+  );
 
   const onSubmit = async (values) => {
     console.log({
@@ -77,27 +92,45 @@ const Schema = () => {
   return (
     <Grid item xs={12}>
       <Paper className={classes.root}>
+        {/*<Form*/}
+        {/*  onSubmit={onSubmit}*/}
+        {/*  initialValues={{}}*/}
+        {/*  render={({handleSubmit, form, values}) => (*/}
+        {/*    <form onSubmit={handleSubmit}>*/}
+        {/*      <BoardMeeting/>*/}
+        {/*      <Participants*/}
+        {/*        onClick={() => onCreateRow(values, form.change)}*/}
+        {/*        data={tableValues}*/}
+        {/*        setTableValues={setTableValues}*/}
+        {/*      />*/}
+        {/*      <GeneralMeeting/>*/}
+        {/*    </form>*/}
+        {/*  )}*/}
+        {/*/>*/}
         <Form
           onSubmit={onSubmit}
-          initialValues={{}}
+          initialValues={{
+            shareholder: "",
+            number_of_shares_before_increase: 10000,
+            existing_shares: "",
+            denomination: 1.1,
+            drawing_course: 25.54,
+            new_shares: "",
+            represented_with: "",
+          }}
           render={({handleSubmit, form, values}) => (
             <form onSubmit={handleSubmit}>
-              <BoardMeeting/>
-              <Participants
-                onClick={() => onCreateRow(values, form.change)}
-                data={tableValues}
-                setTableValues={setTableValues}
-              />
-              <GeneralMeeting/>
               <ExtraordinaryGeneralMeeting
+                values={values}
+                change={form.change}
                 onClick={() => onCreateGeneralMeetingRow(values, form.change)}
                 data={generalMeetingTableValues}
                 setTableValues={setGeneralMeetingTableValues}
               />
-              <Download/>
             </form>
           )}
         />
+        {/*<Download/>*/}
       </Paper>
     </Grid>
   );

@@ -10,17 +10,20 @@ import {store} from "./redux";
 import {Provider} from "react-redux";
 import SchemasProvider from "./providers/schemas";
 import AppContainer from "./components/AppContainer";
+import UserProvider from "./providers/user";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <SchemasProvider>
-            <AppContainer>
-              <Routes/>
-            </AppContainer>
-          </SchemasProvider>
+          <UserProvider>
+            <SchemasProvider>
+              <AppContainer>
+                <Routes/>
+              </AppContainer>
+            </SchemasProvider>
+          </UserProvider>
         </BrowserRouter>
       </ThemeProvider>
     </Provider>

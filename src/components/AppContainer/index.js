@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => {
 const AppContainer = ({children}) => {
   const classes = useStyles();
   return (
-    <Box className={classes.root}>
+    <Box component={"main"} className={classes.root}>
       <Box className={classes.container}>
         <Grid container>
           {children}
