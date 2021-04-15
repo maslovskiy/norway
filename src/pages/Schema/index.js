@@ -1,71 +1,94 @@
 import React from 'react';
 import {Grid, Paper} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
 import {Form} from 'react-final-form';
 import BoardMeeting from "./containers/BoardMeeting";
 import Participants from "./containers/Participants";
 import GeneralMeeting from "./containers/GeneralMeeting";
 import ExtraordinaryGeneralMeeting from "./containers/ExtraordinaryGeneralMeeting";
 import Download from "./containers/Download";
+import {calculator} from "./calculation";
+import {withRouter} from "react-router-dom";
+import {useSchemas} from "../../providers/schemas/hooks";
+import {useStyles} from "./styles";
+import {
+  egf_protokoll_kontantemisjon_conroller,
+  innkalling_egf_kontantemisjon_controller,
+  styreprotokoll_kontantemisjon_controller
+} from "../../api";
+import GoBackButton from "./components/GoBackButton";
 
-const useStyles = makeStyles(() => ({
-  root: {
-    padding: "0px 110px 110px",
-    backgroundColor: "rgba(255,255,255, 0.5)"
-  },
-  flexContainer: {
-    display: "flex",
-  },
-  subSubmit: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    position: "relative",
-    bottom: "-10px"
-  },
-  subSubmitBtn: {
-    backgroundColor: "#49575E",
-    color: "#F6F4F0",
-    width: 32,
-    height: 32,
-    "&:hover": {
-      backgroundColor: "rgba(73,87,94, 0.7)",
-    },
-    "& svg": {
-      width: 20,
-      height: 20
-    }
-  }
-}));
-
-const Schema = () => {
+const Schema = ({match}) => {
 
   const classes = useStyles();
-
+  const {schemas} = useSchemas();
   const [tableValues, setTableValues] = React.useState([]);
-  const [generalMeetingTableValues, setGeneralMeetingTableValues] = React.useState(
-    [
-      {
-        shareholder: "Roisin Long",
-        existing_shares: 100,
-        new_shares: "",
-        represented_with: "",
-      },
-      {
-        shareholder: "Jon Simmonds Person",
-        existing_shares: 500,
-        new_shares: 200,
-        represented_with: "Jameson Howard",
-      }
-    ]
-  );
+  const [generalMeetingTableValues, setGeneralMeetingTableValues] = React.useState([
+    {
+      shareholder: "Roisin Long",
+      existing_shares: 100,
+      new_shares: "",
+      represented_with: "",
+    },
+    {
+      shareholder: "Jon Simmonds Person",
+      existing_shares: 500,
+      new_shares: 200,
+      represented_with: "Jameson Howard",
+    },
+    {
+      shareholder: "Shahid Kenny",
+      existing_shares: "",
+      new_shares: 300,
+      represented_with: "",
+    },
+    {
+      shareholder: "Frederic Hurst",
+      existing_shares: 800,
+      new_shares: "",
+      represented_with: "",
+    },
+    {
+      shareholder: "Testing Tool AS",
+      existing_shares: "",
+      new_shares: 100,
+      represented_with: "Aarav Fraser",
+    },
+    {
+      shareholder: "Prover AS",
+      existing_shares: "",
+      new_shares: 600,
+      represented_with: "Findlay Gilmore",
+    },
+    {
+      shareholder: "ASM SA",
+      existing_shares: 2000,
+      new_shares: "",
+      represented_with: "Kaiya Archer",
+    },
+  ]);
 
-  const onSubmit = async (values) => {
-    console.log({
-      ...values,
-      "users": tableValues,
-      "generalMeeting": generalMeetingTableValues
-    })
+  const onSubmit = (values) => {
+    console.log({values})
+    switch (values.type) {
+      case 1 :
+        return styreprotokoll_kontantemisjon_controller({
+          ...values,
+          "users": tableValues,
+          "generalMeeting": generalMeetingTableValues
+        })
+      case 2 :
+        return innkalling_egf_kontantemisjon_controller({
+          ...values,
+          "users": tableValues,
+          "generalMeeting": generalMeetingTableValues
+        })
+      case 3 :
+        return egf_protokoll_kontantemisjon_conroller({
+          ...values,
+          "users": tableValues,
+          "generalMeeting": generalMeetingTableValues
+        })
+    }
   }
 
   const onCreateRow = (values, change) => {
@@ -76,39 +99,39 @@ const Schema = () => {
     change("skalSignere", false);
   }
   const onCreateGeneralMeetingRow = (values, change) => {
-    const {aksjonær, eksisterende_aksjer, nye_aksjer, representert_ved} = values;
+    const {shareholder, existing_shares, new_shares, represented_with, generalMeetingTableValues = []} = values;
     setGeneralMeetingTableValues(prevValues => [...prevValues, {
-      aksjonær,
-      eksisterende_aksjer,
-      nye_aksjer,
-      representert_ved
+      shareholder,
+      existing_shares,
+      new_shares,
+      represented_with
     }]);
-    change("aksjonær", "");
-    change("eksisterende_aksjer", "");
-    change("nye_aksjer", "");
-    change("representert_ved", "");
+    change("generalMeetingTableValues", [
+      ...generalMeetingTableValues,
+      {
+        shareholder,
+        existing_shares,
+        new_shares,
+        represented_with
+      }
+    ]);
+    change("shareholder", "");
+    change("existing_shares", "");
+    change("new_shares", "");
+    change("represented_with", "");
   }
+
+  const schema = schemas.find(schema => schema.id === parseInt(match.params.id));
 
   return (
     <Grid item xs={12}>
+      {
+        schema && <GoBackButton to="/" name={schema.name}/>
+      }
       <Paper className={classes.root}>
-        {/*<Form*/}
-        {/*  onSubmit={onSubmit}*/}
-        {/*  initialValues={{}}*/}
-        {/*  render={({handleSubmit, form, values}) => (*/}
-        {/*    <form onSubmit={handleSubmit}>*/}
-        {/*      <BoardMeeting/>*/}
-        {/*      <Participants*/}
-        {/*        onClick={() => onCreateRow(values, form.change)}*/}
-        {/*        data={tableValues}*/}
-        {/*        setTableValues={setTableValues}*/}
-        {/*      />*/}
-        {/*      <GeneralMeeting/>*/}
-        {/*    </form>*/}
-        {/*  )}*/}
-        {/*/>*/}
         <Form
           onSubmit={onSubmit}
+          decorators={[calculator]}
           initialValues={{
             shareholder: "",
             number_of_shares_before_increase: 10000,
@@ -120,6 +143,13 @@ const Schema = () => {
           }}
           render={({handleSubmit, form, values}) => (
             <form onSubmit={handleSubmit}>
+              <BoardMeeting/>
+              <Participants
+                onClick={() => onCreateRow(values, form.change)}
+                data={tableValues}
+                setTableValues={setTableValues}
+              />
+              <GeneralMeeting/>
               <ExtraordinaryGeneralMeeting
                 values={values}
                 change={form.change}
@@ -127,10 +157,10 @@ const Schema = () => {
                 data={generalMeetingTableValues}
                 setTableValues={setGeneralMeetingTableValues}
               />
+              <Download form={form}/>
             </form>
           )}
         />
-        {/*<Download/>*/}
       </Paper>
     </Grid>
   );
@@ -138,4 +168,4 @@ const Schema = () => {
 
 Schema.propTypes = {};
 
-export default Schema;
+export default withRouter(Schema);

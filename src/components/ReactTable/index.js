@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useMemo} from 'react'
 import {useTable, usePagination, useSortBy} from 'react-table'
 import {makeStyles} from "@material-ui/core/styles";
 
@@ -91,9 +91,9 @@ const Table = ({columns, data, updateMyData, skipPageReset, defaultColumn}) => {
     <table {...getTableProps()} className={classes.table}>
       <thead>
       {headerGroups.map(headerGroup => (
-        <tr {...headerGroup.getHeaderGroupProps()}>
+        <tr {...headerGroup.getHeaderGroupProps()} >
           {headerGroup.headers.map(column => (
-            <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+            <th {...column.getHeaderProps(column.getSortByToggleProps())} style={column.style}>
               {column.render('Header')}
               <span> {column.isSorted ? column.isSortedDesc ? ' 🔽' : ' 🔼' : ''}  </span>
             </th>
@@ -127,10 +127,14 @@ const ReactTable = ({data, setTableValues, columns, defaultColumn}) => {
     setTableValues(result)
   }
 
+  const memoData = useMemo(() => {
+    return data
+  }, [data]);
+
   return (
     <Table
       columns={columns}
-      data={data}
+      data={memoData}
       updateMyData={updateMyData}
       setTableValues={setTableValues}
       defaultColumn={defaultColumn}

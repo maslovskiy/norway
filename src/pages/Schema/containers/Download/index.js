@@ -24,7 +24,7 @@ const useStyles = makeStyles(() => ({
     padding: 0,
     margin: 0,
     cursor: "pointer",
-    "& img" : {
+    "& img": {
       marginRight: "25px"
     }
   },
@@ -51,12 +51,14 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const Download = (props) => {
+const Download = ({form}) => {
   const classes = useStyles();
   return (
     <FormSection title={"Laste Ned Dokumenter"} innerClassName={classes.root}>
       <FormSection className={classes.section}>
-        <button type="submit" className={classes.button}>
+        <button type="submit" onClick={() => {
+          form.change("type", 1);
+        }} className={classes.button} value={1}>
           <Box>
             <img src={documentSrc}/>
           </Box>
@@ -72,7 +74,9 @@ const Download = (props) => {
         </button>
       </FormSection>
       <FormSection className={classes.section}>
-        <button type="submit" className={classes.button}>
+        <button type="submit" onClick={() => {
+          form.change("type", 2);
+        }} className={classes.button} value={2}>
           <Box>
             <img src={documentSrc}/>
           </Box>
@@ -88,7 +92,9 @@ const Download = (props) => {
         </button>
       </FormSection>
       <FormSection className={classes.section}>
-        <button type="submit" className={classes.button}>
+        <button type="submit" onClick={() => {
+          form.change("type", 3);
+        }} className={classes.button}>
           <Box>
             <img src={documentSrc}/>
           </Box>

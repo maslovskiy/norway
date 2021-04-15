@@ -28,3 +28,42 @@ export const getUser = () => {
     .then(response => response)
     .catch(error => error)
 }
+
+export const styreprotokoll_kontantemisjon_controller = request => {
+  return axios.post(`/document/styreprotokoll-kontantemisjon/doc`, request,
+    {responseType: 'blob'})
+    .then(response => {
+      const type = response.headers['content-type']
+      const blob = new Blob([response.data], {type: type, encoding: 'UTF-8'})
+      const link = document.createElement('a')
+      link.href = window.URL.createObjectURL(blob)
+      link.download = "Protokoll Fra Styremøte.docx"
+      link.click()
+    });
+}
+
+export const innkalling_egf_kontantemisjon_controller = request => {
+  return axios.post(`/document/innkalling-egf-kontantemisjon/doc`, request,
+    {responseType: 'blob'})
+    .then(response => {
+      const type = response.headers['content-type']
+      const blob = new Blob([response.data], {type: type, encoding: 'UTF-8'})
+      const link = document.createElement('a')
+      link.href = window.URL.createObjectURL(blob)
+      link.download = "Protokoll Fra Styremøte.docx"
+      link.click()
+    });
+}
+export const egf_protokoll_kontantemisjon_conroller= request => {
+  return axios.post(`/document/egf-protokoll-kontantemisjon/doc`, request,
+    {responseType: 'blob'})
+    .then(response => {
+      const type = response.headers['content-type']
+      const blob = new Blob([response.data], {type: type, encoding: 'UTF-8'})
+      const link = document.createElement('a')
+      link.href = window.URL.createObjectURL(blob)
+      link.download = "Protokoll Fra Styremøte.docx"
+      link.click()
+    });
+}
+

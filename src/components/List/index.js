@@ -84,9 +84,9 @@ const SchemaList = () => {
       <Divider variant={"fullWidth"}/>
       <List classes={{root: classes.list}}>
         {
-          schemas.map(({attributes, name, secondary}, index) => {
-            return <React.Fragment key={index}>
-              <Link to={`/schema/${index}`}>
+          schemas.map(({attributes, name, id, secondary}, index) => {
+            return <React.Fragment key={id}>
+              <Link to={`/schema/${id}`}>
                 <ListItem classes={{
                   root: classes.listItem
                 }}>

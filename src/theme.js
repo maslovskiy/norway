@@ -20,13 +20,9 @@ const theme = createMuiTheme({
       root: {
         whiteSpace: "nowrap",
         color: "#000",
-
-        // fontSize: "16px",
-        // border: "1px solid #DEDEDE",
+        fontSize: "0.9rem",
         "&$focused": {
           color: "#000",
-          // fontSize: "20px",
-          // lineHeight: " 24px"
         },
       },
     },
@@ -48,7 +44,6 @@ const theme = createMuiTheme({
     MuiFormControl: {
       root: {
         width: "100%",
-        overflow: "hidden"
       },
     },
 

@@ -12,6 +12,7 @@ import TextField from "../../components/Inputs/TextField";
 import TextArea from "../../components/Inputs/TextArea";
 import {roles} from "../../../../models/user";
 import Select from "../../../../components/Select";
+import {debounce} from "../../../../utils";
 
 const useStyles = makeStyles(() => ({
   subSubmit: {
@@ -43,14 +44,12 @@ const EditableCell = ({value: initialValue, row: {index}, column, updateMyData})
   const [value, setValue] = React.useState(initialValue);
 
   const onChange = e => {
-    setValue(e.target.value)
+    setValue(e.target.value);
+    debounce(() => updateMyData(index, column.id, value))()
   }
 
   const onChangeCheckbox = e => {
     setValue(e.target.checked)
-  }
-
-  const onBlur = () => {
     updateMyData(index, column.id, value)
   }
 
@@ -60,16 +59,16 @@ const EditableCell = ({value: initialValue, row: {index}, column, updateMyData})
 
   switch (column.id) {
     case "rolle":
-      return <Select defaultValue={defaultValue} value={value} options={roles} onChange={onChange} onBlur={onBlur}/>
+      return <Select defaultValue={defaultValue} value={value} options={roles} onChange={onChange}/>
     case "skalSignere":
       return (
         <Box>
-          <MaterialCheckbox checked={value} onChange={onChangeCheckbox} onBlur={onBlur}/>
+          <MaterialCheckbox checked={value} onChange={onChangeCheckbox}/>
           {value ? "Påkrevd" : "Ikke obligatorisk"}
         </Box>
       )
     default:
-      return <MaterialTextField value={value} onChange={onChange} onBlur={onBlur}/>
+      return <MaterialTextField value={value} onChange={onChange}/>
   }
 }
 
@@ -85,20 +84,30 @@ const Participants = ({onClick, data, setTableValues}) => {
     {
       Header: 'Navn',
       accessor: 'navn',
-      width: 500
+      style: {
+        width: "30%"
+      }
     },
     {
       Header: 'Rolle',
       accessor: 'rolle',
-      width: 500
+      style: {
+        width: "30%"
+      }
     },
     {
       Header: 'Skal Signere',
       accessor: 'skalSignere',
+      style: {
+        width: "30%"
+      }
     },
     {
       Header: 'Action',
       accessor: 'action',
+      style: {
+        width: "10%"
+      },
       Cell: ({row, data}) => {
         return (
           <div onClick={() => {
