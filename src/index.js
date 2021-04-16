@@ -1,32 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter} from "react-router-dom";
+import {ThemeProvider} from "@material-ui/core";
+
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Routes from "./routes";
-import {BrowserRouter} from "react-router-dom";
-import {ThemeProvider} from "@material-ui/core";
 import theme from "./theme";
-import {store} from "./redux";
-import {Provider} from "react-redux";
-import SchemasProvider from "./providers/schemas";
 import AppContainer from "./components/AppContainer";
-import UserProvider from "./providers/user";
+import AppProvider from './providers';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <UserProvider>
-            <SchemasProvider>
-              <AppContainer>
-                <Routes/>
-              </AppContainer>
-            </SchemasProvider>
-          </UserProvider>
-        </BrowserRouter>
-      </ThemeProvider>
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <AppProvider>
+          <AppContainer>
+            <Routes/>
+          </AppContainer>
+        </AppProvider>
+      </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

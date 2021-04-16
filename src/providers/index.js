@@ -1,14 +1,15 @@
-import React, { createContext } from 'react';
-import ErrorProvider from './error';
+import React, {createContext} from 'react';
+import SchemasProvider from './schemas';
 import UserProvider from './user';
+
 export const AppContext = createContext({});
 
-export default ({ children }) => (
+export default ({children}) => (
   <AppContext.Provider value={{}}>
-    <ErrorProvider>
+    <SchemasProvider>
       <UserProvider>
         {children}
       </UserProvider>
-    </ErrorProvider>
+    </SchemasProvider>
   </AppContext.Provider>
 )

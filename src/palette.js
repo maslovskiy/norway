@@ -1,31 +1,9 @@
 export default {
   accent: "#F6F4F0",
   secondary: "#49575E",
-
-
-
-  dpdRed: "rgba(220, 0, 50, 1)",
-  blue: "rgba(0,113,227, 1)",
-  green: "rgba(138,193,73, 1)",
-  darkGreen: "rgba(132, 197, 70, 0.2)",
-  yellow: "rgba(255,213,0, 1)",
-  slate: "rgba(48, 48, 48, 1)",
-  sunburst: "rgb(254,148,0)",
-  stopListHeader: "rgba(238, 238, 238, 1)",
-  stopListSubheader: "rgba(0, 0, 0, 0.67)",
-  selectedStopListRow: "rgba(0, 113, 227, 0.1)",
-  selectedStopDetailsListRow: "rgba(40, 82, 107, 1)",
-  statuses: {
-    statusAmber: "rgba(255, 155, 5, 1)",
-    statusGreen: "rgba(76, 156, 46, 1)",
-    statusBlue: "rgba(0, 194, 255, 1)",
-  },
-  pictonBlue: "rgba(68, 167, 223, 1)",
-  goldenGrass: "rgba(227, 173, 26, 1)",
-  flamingo: "rgba(242, 80, 65, 1)",
-  endeavour: "rgba(0, 96, 162, 1)",
-  grey: "rgb(128, 130, 133)",
-  lightGrey: "#E6E7E8",
+  lightGray: "#FCEEEC",
+  darkGray: "#2F3333",
+  red: "#FC5569",
   typography: {
     black: {
       solid: "rgba(0, 0, 0, 1)",
@@ -44,33 +22,5 @@ export default {
       ghost: "rgba(255, 255, 255, .2)",
       neutral: "rgba(255, 255, 255, .1)",
     },
-  },
-  btn: {
-    blueFill: "#44A7DF",
-    blueBorder: "1px solid #0060A2",
-  },
-  map: {
-    key1: "rgba(132, 197, 70, 1)",
-    key2: "rgba(68, 167, 223, 1)",
-    key3: "rgba(227, 173, 26, 1)",
-    key4: "rgba(242, 119, 116, 1)",
-    key5: "rgba(8, 174, 193, 1)",
-    key6: "rgba(199, 45, 73, 1)",
-    key7: "rgba(133, 113, 171, 1)",
-    key8: "rgba(53, 79, 189, 1)",
-    mk1selected: "rgba(132, 197, 70, .2)",
-    mk2selected: "rgba(68, 167, 223, .2)",
-    mk3selected: "rgba(253, 192, 25, .2)",
-    mk2disabled: "rgba(68, 167, 223, .38)",
-  },
-  modalButtons: {
-    yellow: "rgba(255, 213, 4, 1)",
-    orange: "rgba(254, 148, 4, 1)",
-    blue: "rgba(67, 167, 223, 1)",
-    green: "rgba(138, 193, 73, 1);",
-    greenBorder: "1px solid #328442",
-  },
-  snackbarButtons: {
-    yellow: "rgba(255, 213, 0, 1)",
   },
 };

@@ -98,7 +98,6 @@ const ExtraordinaryGeneralMeeting = ({onClick, data, setTableValues, values, cha
               <Field
                 name="total_existing_share_capital"
                 component={TextField}
-                type="text"
                 label="Total Existing Share Capital"
                 disabled
               />
@@ -109,7 +108,6 @@ const ExtraordinaryGeneralMeeting = ({onClick, data, setTableValues, values, cha
               <Field
                 name="number_of_new_shares"
                 component={TextField}
-                type="text"
                 label="Number of New Shares"
                 disabled
               />
@@ -118,7 +116,6 @@ const ExtraordinaryGeneralMeeting = ({onClick, data, setTableValues, values, cha
               <Field
                 name="sum_increased_share_capital"
                 component={TextField}
-                type="text"
                 label="sum increased share capital"
                 disabled
               />
@@ -129,7 +126,6 @@ const ExtraordinaryGeneralMeeting = ({onClick, data, setTableValues, values, cha
               <Field
                 name="number_of_shares_after_increase"
                 component={TextField}
-                type="text"
                 label="Number of Shares After Increase"
                 disabled
               />
@@ -138,7 +134,6 @@ const ExtraordinaryGeneralMeeting = ({onClick, data, setTableValues, values, cha
               <Field
                 name="total_share_capital"
                 component={TextField}
-                type="text"
                 label="Total Share Capital"
                 disabled
               />
@@ -149,7 +144,6 @@ const ExtraordinaryGeneralMeeting = ({onClick, data, setTableValues, values, cha
               <Field
                 name="drawing_course"
                 component={TextField}
-                type="text"
                 label="Drawing course"
               />
             </Grid>
@@ -157,7 +151,6 @@ const ExtraordinaryGeneralMeeting = ({onClick, data, setTableValues, values, cha
               <Field
                 name="denomination"
                 component={TextField}
-                type="text"
                 label="Denomination"
               />
             </Grid>
@@ -165,7 +158,6 @@ const ExtraordinaryGeneralMeeting = ({onClick, data, setTableValues, values, cha
               <Field
                 name="total_subscription_amount"
                 component={TextField}
-                type="text"
                 label="Total Subscription Amount"
                 disabled
               />

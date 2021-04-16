@@ -4,9 +4,6 @@ import {makeStyles} from "@material-ui/core/styles";
 import {useUser} from "../../providers/user/hooks";
 
 const useStyles = makeStyles((theme) => {
-  // console.log({
-  //     theme
-  // })
   return ({
     root: {
       display: "flex",

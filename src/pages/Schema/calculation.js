@@ -102,4 +102,16 @@ export const calculator = createDecorator(
       }
     }
   },
+  // {
+  //   field: "total_subscription_amount",
+  //   updates: {
+  //     number_of_new_shares: (ignoredValue, allValues = {}) => {
+  //       console.log("total_subscription_amount")
+  //       // const {generalMeetingTableValues = []} = allValues;
+  //       // return generalMeetingTableValues.length > 0 ? generalMeetingTableValues
+  //       //   .map(({new_shares}) => new_shares ? valuesChecker(new_shares) : 0)
+  //       //   .reduce((acc, val) => feeder(acc, val)) : 0
+  //     },
+  //   }
+  // },
 );

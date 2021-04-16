@@ -1,3 +1,5 @@
+import {get} from "lodash";
+
 export const initialState = {
   data: [],
   filterValue: "ALLE_SKJEMAER",
@@ -15,7 +17,7 @@ export const reducer = (state, action) => {
         filterValue: action.value,
       };
     case 'SET_SCHEMAS':
-      const result = action.data.map(value => {
+      const result = get(action, "data", []).map(value => {
         return ({
           ...value,
           attributes: value.attributes.reduce((obj, item) => Object.assign(obj, item), {})
@@ -26,7 +28,7 @@ export const reducer = (state, action) => {
         data: result,
       };
     case 'SET_SCHEMAS_TYPES':
-      const types = action.data.reduce((obj, item) => Object.assign(obj, item), {});
+      const types = get(action, "data", []).reduce((obj, item) => Object.assign(obj, item), {});
       return {
         ...state,
         types: {

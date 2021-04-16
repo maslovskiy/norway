@@ -2,12 +2,12 @@ import React, {useEffect, useMemo} from 'react'
 import {useTable, usePagination, useSortBy} from 'react-table'
 import {makeStyles} from "@material-ui/core/styles";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   table: {
     borderSpacing: 0,
     padding: "1rem",
     width: "100%",
-    backgroundColor: "rgba(255,255,255,0.4)",
+    backgroundColor: `rgba(${theme.palette.common.white},0.4)`,
     border: "1px solid rgba(73, 87, 94, 0.2)",
     borderRadius: "8px",
 
@@ -25,7 +25,6 @@ const useStyles = makeStyles(() => ({
       lineHeight: "24px",
       color: "#8D9091",
       textAlign: "left",
-      // minWidth: 200,
       padding: "0 10px",
     },
 
@@ -35,15 +34,15 @@ const useStyles = makeStyles(() => ({
       fontWeight: 600,
       fontSize: "14px",
       lineHeight: "24px",
-      color: "#000000",
+      color: theme.palette.common.black,
       textAlign: "left",
 
       "& .MuiInput-underline:before": {
-        borderColor: "#fff"
+        borderColor: theme.palette.common.white,
       },
 
       "& .MuiInput-underline:after": {
-        borderColor: "#000"
+        borderColor: theme.palette.common.black,
       },
 
       "&::last-child": {
@@ -55,7 +54,7 @@ const useStyles = makeStyles(() => ({
         fontWeight: 600,
         fontSize: "14px",
         lineHeight: "24px",
-        color: "#000000",
+        color: theme.palette.common.black,
         fontFamily: "Open Sans",
         backgroundColor: "rgba(255,255,255,0.4)",
         border: "none",
