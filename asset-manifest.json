@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/norway/static/css/main.2b46629b.chunk.css",
-    "main.js": "/norway/static/js/main.35988719.chunk.js",
-    "main.js.map": "/norway/static/js/main.35988719.chunk.js.map",
+    "main.js": "/norway/static/js/main.2f54c397.chunk.js",
+    "main.js.map": "/norway/static/js/main.2f54c397.chunk.js.map",
     "runtime-main.js": "/norway/static/js/runtime-main.04fa3798.js",
     "runtime-main.js.map": "/norway/static/js/runtime-main.04fa3798.js.map",
-    "static/js/2.e1236cb7.chunk.js": "/norway/static/js/2.e1236cb7.chunk.js",
-    "static/js/2.e1236cb7.chunk.js.map": "/norway/static/js/2.e1236cb7.chunk.js.map",
+    "static/js/2.7a088fda.chunk.js": "/norway/static/js/2.7a088fda.chunk.js",
+    "static/js/2.7a088fda.chunk.js.map": "/norway/static/js/2.7a088fda.chunk.js.map",
     "static/js/3.c5f88b26.chunk.js": "/norway/static/js/3.c5f88b26.chunk.js",
     "static/js/3.c5f88b26.chunk.js.map": "/norway/static/js/3.c5f88b26.chunk.js.map",
     "index.html": "/norway/index.html",
     "static/css/main.2b46629b.chunk.css.map": "/norway/static/css/main.2b46629b.chunk.css.map",
-    "static/js/2.e1236cb7.chunk.js.LICENSE.txt": "/norway/static/js/2.e1236cb7.chunk.js.LICENSE.txt"
+    "static/js/2.7a088fda.chunk.js.LICENSE.txt": "/norway/static/js/2.7a088fda.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.04fa3798.js",
-    "static/js/2.e1236cb7.chunk.js",
+    "static/js/2.7a088fda.chunk.js",
     "static/css/main.2b46629b.chunk.css",
-    "static/js/main.35988719.chunk.js"
+    "static/js/main.2f54c397.chunk.js"
   ]
 }
